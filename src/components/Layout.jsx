@@ -16,10 +16,12 @@ export default function Layout() {
   const title = getPageTitle(pathname);
 
   const drawer = (
-    <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-      <Toolbar sx={{ gap: 1.5 }}>
-        <WarehouseIcon color="primary" />
-        <Typography variant="subtitle1" fontWeight={700} noWrap>Inventory Manager</Typography>
+    <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column', background: 'linear-gradient(180deg, rgba(255,122,24,0.045), transparent 32%)' }}>
+      <Toolbar sx={{ gap: 1.5, minHeight: 76 }}>
+        <Box sx={{ width: 36, height: 36, borderRadius: 2.5, display: 'grid', placeItems: 'center', background: 'linear-gradient(135deg, #FFA044, #FF7414)', boxShadow: '0 5px 18px rgba(255,122,24,0.24)' }}>
+          <WarehouseIcon sx={{ color: '#17100A' }} />
+        </Box>
+        <Typography variant="subtitle1" fontWeight={800} noWrap sx={{ letterSpacing: '-0.02em' }}>Inventory Manager</Typography>
       </Toolbar>
       <Divider />
       <List component="nav" aria-label="Main navigation" sx={{ px: 1, py: 1.5 }}>
@@ -34,9 +36,10 @@ export default function Layout() {
               aria-current={active ? 'page' : undefined}
               onClick={() => setMobileOpen(false)}
               sx={{
-                borderRadius: 2, mb: 0.5,
-                '&.Mui-selected': { bgcolor: 'primary.main', color: 'primary.contrastText', '&:hover': { bgcolor: 'primary.dark' } },
-                '&.Mui-selected .MuiListItemIcon-root': { color: 'inherit' },
+                borderRadius: 2, mb: 0.5, border: '1px solid transparent', color: 'text.secondary',
+                '&.Mui-selected': { bgcolor: 'rgba(255,122,24,0.13)', color: 'primary.light', borderColor: 'rgba(255,162,74,0.22)', boxShadow: 'inset 3px 0 0 #FF7A18', '&:hover': { bgcolor: 'rgba(255,122,24,0.18)' } },
+                '&.Mui-selected .MuiListItemIcon-root': { color: 'primary.light' },
+                '&:hover': { color: 'text.primary', bgcolor: 'rgba(255,255,255,0.045)' },
               }}
             >
               <ListItemIcon sx={{ minWidth: 40 }}>{item.icon}</ListItemIcon>
@@ -63,8 +66,8 @@ export default function Layout() {
           <IconButton edge="start" aria-label="Open navigation" onClick={() => setMobileOpen(true)} sx={{ mr: 1, display: { xs: 'inline-flex', lg: 'none' } }}>
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="h1" noWrap sx={{ flexGrow: 1 }}>{title}</Typography>
-          <Chip label="Demo user" size="small" variant="outlined" sx={{ display: { xs: 'none', md: 'inline-flex' } }} />
+          <Typography variant="h6" component="h1" noWrap sx={{ flexGrow: 1, fontWeight: 750 }}>{title}</Typography>
+          <Chip label="Demo user" size="small" variant="outlined" sx={{ display: { xs: 'none', md: 'inline-flex' }, color: 'primary.light', borderColor: 'rgba(255,162,74,0.35)', bgcolor: 'rgba(255,122,24,0.07)' }} />
         </Toolbar>
       </AppBar>
 

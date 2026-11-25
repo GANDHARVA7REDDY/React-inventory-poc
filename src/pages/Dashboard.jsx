@@ -45,11 +45,11 @@ export default function Dashboard() {
           <Box sx={{ width: '100%', height: Math.max(260, s.byCategory.length * 56) }}>
             <ResponsiveContainer>
               <BarChart data={s.byCategory} layout="vertical" margin={{ left: 8, right: 24, top: 4, bottom: 4 }}>
-                <CartesianGrid strokeDasharray="3 3" horizontal={false} />
-                <XAxis type="number" allowDecimals={false} />
-                <YAxis type="category" dataKey="name" width={110} tick={{ fontSize: 12 }} />
-                <Tooltip formatter={(v) => [formatNumber(v), 'Units']} />
-                <Bar dataKey="units" fill="#2f5bea" radius={[0, 6, 6, 0]} />
+                <CartesianGrid stroke="rgba(255,255,255,0.09)" strokeDasharray="4 5" horizontal={false} />
+                <XAxis type="number" allowDecimals={false} tick={{ fill: '#B5B8C0', fontSize: 11 }} axisLine={{ stroke: 'rgba(255,255,255,0.14)' }} tickLine={{ stroke: 'rgba(255,255,255,0.14)' }} />
+                <YAxis type="category" dataKey="name" width={110} tick={{ fontSize: 12, fill: '#D7D9DE' }} axisLine={false} tickLine={false} />
+                <Tooltip formatter={(v) => [formatNumber(v), 'Units']} contentStyle={{ backgroundColor: 'rgba(20,22,27,0.96)', border: '1px solid rgba(255,255,255,0.14)', borderRadius: 12, color: '#F7F7F9', backdropFilter: 'blur(14px)', boxShadow: '0 10px 30px rgba(0,0,0,0.32)' }} labelStyle={{ color: '#FFA24A', fontWeight: 700 }} itemStyle={{ color: '#F7F7F9' }} />
+                <Bar dataKey="units" fill="#FF7A18" radius={[0, 7, 7, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </Box>
