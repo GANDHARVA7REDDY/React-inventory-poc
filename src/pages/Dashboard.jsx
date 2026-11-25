@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { Box, Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, useTheme } from '@mui/material';
-import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { Bar, BarChart, CartesianGrid, Cell, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import InventoryIcon from '@mui/icons-material/Inventory2';
 import WarehouseIcon from '@mui/icons-material/Warehouse';
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
@@ -16,6 +16,13 @@ import PageHeader from '../components/PageHeader.jsx';
 import { StockStatusChip } from '../components/StatusChip.jsx';
 
 const REPLENISH_LIMIT = 8;
+
+// Muted, high-contrast category colors. Light mode charts may use color for data distinction
+// while the surrounding application UI remains strictly black, white and gray.
+const CHART_COLORS = {
+  light: ['#E85002', '#365F91', '#16845B', '#8A5AA5', '#B7791F', '#2D7F89', '#C04B68'],
+  dark: ['#FF8A2A', '#69A9F5', '#35C98B', '#B68CFF', '#FFC857', '#4DD0E1', '#F178B6'],
+};
 
 /** INV-01 Dashboard: every figure is derived from current data, so it updates after each transaction. */
 export default function Dashboard() {
@@ -49,8 +56,30 @@ export default function Dashboard() {
                 <CartesianGrid stroke={muiTheme.palette.mode === 'dark' ? 'rgba(255,255,255,0.09)' : muiTheme.palette.divider} strokeDasharray="4 5" horizontal={false} />
                 <XAxis type="number" allowDecimals={false} tick={{ fill: muiTheme.palette.mode === 'dark' ? '#B5B8C0' : muiTheme.palette.text.secondary, fontSize: 11 }} axisLine={{ stroke: muiTheme.palette.mode === 'dark' ? 'rgba(255,255,255,0.14)' : muiTheme.palette.divider }} tickLine={{ stroke: muiTheme.palette.mode === 'dark' ? 'rgba(255,255,255,0.14)' : muiTheme.palette.divider }} />
                 <YAxis type="category" dataKey="name" width={110} tick={{ fontSize: 12, fill: muiTheme.palette.mode === 'dark' ? '#D7D9DE' : muiTheme.palette.text.secondary }} axisLine={false} tickLine={false} />
-                <Tooltip formatter={(v) => [formatNumber(v), 'Units']} contentStyle={{ backgroundColor: muiTheme.palette.mode === 'dark' ? '#14161B' : '#FFFFFF', border: `1px solid ${muiTheme.palette.divider}`, borderRadius: 8, color: muiTheme.palette.text.primary }} labelStyle={{ color: muiTheme.palette.primary.light, fontWeight: 700 }} itemStyle={{ color: muiTheme.palette.text.primary }} />
-                <Bar dataKey="units" fill={muiTheme.palette.primary.main} radius={[0, 7, 7, 0]} />
+                <Tooltip
+                  formatter={(v) => [formatNumber(v), 'Units']}
+                  cursor={{ fill: muiTheme.palette.text.primary, fillOpacity: 0.055 }}
+                  contentStyle={{
+                    backgroundColor: muiTheme.palette.background.paper,
+                    border: `1px solid ${muiTheme.palette.divider}`,
+                    borderRadius: 8,
+                    color: muiTheme.palette.text.primary,
+                  }}
+                  labelStyle={{ color: muiTheme.palette.text.primary, fontWeight: 700 }}
+                  itemStyle={{ color: muiTheme.palette.text.primary }}
+                />
+                <Bar
+                  dataKey="units"
+                  radius={[0, 7, 7, 0]}
+                  activeBar={{ stroke: muiTheme.palette.text.primary, strokeWidth: 2 }}
+                >
+                  {s.byCategory.map((entry, index) => (
+                    <Cell
+                      key={entry.name}
+                      fill={CHART_COLORS[muiTheme.palette.mode][index % CHART_COLORS[muiTheme.palette.mode].length]}
+                    />
+                  ))}
+                </Bar>
               </BarChart>
             </ResponsiveContainer>
           </Box>

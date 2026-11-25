@@ -9,9 +9,9 @@ export default function StatCard({ label, value, caption, icon, color = 'primary
       <Box
         sx={{
           width: 44, height: 44, borderRadius: 2, flexShrink: 0, display: 'grid', placeItems: 'center',
-          color,
-          bgcolor: (theme) => theme.palette.mode === 'dark' ? '#2D1D12' : '#FCE9DF',
-          border: (theme) => `1px solid ${theme.palette.mode === 'dark' ? '#63300F' : '#F1C2AA'}`,
+          color: (theme) => theme.palette.mode === 'dark' ? color : theme.palette.text.primary,
+          bgcolor: (theme) => theme.palette.mode === 'dark' ? '#2D1D12' : '#EEEEEE',
+          border: (theme) => `1px solid ${theme.palette.mode === 'dark' ? '#63300F' : '#D0D0D0'}`,
         }}
       >
         {icon}

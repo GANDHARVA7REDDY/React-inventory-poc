@@ -23,7 +23,7 @@ export default function Layout() {
   const drawer = (
     <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
       <Toolbar sx={{ gap: 1.5, minHeight: 76 }}>
-        <Box sx={{ width: 36, height: 36, borderRadius: 2, display: 'grid', placeItems: 'center', backgroundColor: isDark ? '#E86A12' : '#E85002' }}>
+        <Box sx={{ width: 36, height: 36, borderRadius: 2, display: 'grid', placeItems: 'center', backgroundColor: isDark ? '#E86A12' : '#333333' }}>
           <WarehouseIcon sx={{ color: isDark ? '#17100A' : '#FFFFFF' }} />
         </Box>
         <Typography variant="subtitle1" fontWeight={800} noWrap sx={{ letterSpacing: '-0.02em' }}>Inventory Manager</Typography>
@@ -43,14 +43,14 @@ export default function Layout() {
               sx={{
                 borderRadius: 2, mb: 0.5, border: '1px solid transparent', color: 'text.secondary',
                 '&.Mui-selected': {
-                  bgcolor: isDark ? '#2D1D12' : '#FCE9DF',
-                  color: isDark ? 'primary.light' : 'primary.main',
-                  borderColor: isDark ? '#63300F' : '#F1C2AA',
-                  boxShadow: isDark ? 'inset 3px 0 0 #FF7A18' : 'inset 3px 0 0 #E85002',
-                  '&:hover': { bgcolor: isDark ? '#3A2516' : '#F9D8C8' },
+                  bgcolor: isDark ? '#2D1D12' : '#EAEAEA',
+                  color: isDark ? 'primary.light' : 'text.primary',
+                  borderColor: isDark ? '#63300F' : '#D0D0D0',
+                  boxShadow: isDark ? 'inset 3px 0 0 #FF7A18' : 'inset 3px 0 0 #333333',
+                  '&:hover': { bgcolor: isDark ? '#3A2516' : '#E0E0E0' },
                 },
-                '&.Mui-selected .MuiListItemIcon-root': { color: isDark ? 'primary.light' : 'primary.main' },
-                '&:hover': { color: 'text.primary', bgcolor: isDark ? '#1B1D22' : '#F1F1F1' },
+                '&.Mui-selected .MuiListItemIcon-root': { color: isDark ? 'primary.light' : 'text.primary' },
+                '&:hover': { color: 'text.primary', bgcolor: isDark ? '#1B1D22' : '#EEEEEE' },
               }}
             >
               <ListItemIcon sx={{ minWidth: 40 }}>{item.icon}</ListItemIcon>
@@ -90,8 +90,8 @@ export default function Layout() {
           <Chip label="Demo user" size="small" variant="outlined" sx={{
             display: { xs: 'none', md: 'inline-flex' },
             color: 'primary.main',
-            borderColor: isDark ? '#63300F' : '#F1C2AA',
-            bgcolor: isDark ? '#21170F' : '#FFF1E9',
+            borderColor: isDark ? '#63300F' : '#D0D0D0',
+            bgcolor: isDark ? '#21170F' : '#EEEEEE',
           }} />
         </Toolbar>
       </AppBar>
