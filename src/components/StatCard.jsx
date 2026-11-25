@@ -4,14 +4,14 @@ export default function StatCard({ label, value, caption, icon, color = 'primary
   return (
     <Paper
       onClick={onClick}
-      sx={{ p: 2, display: 'flex', gap: 2, alignItems: 'center', cursor: onClick ? 'pointer' : 'default', minWidth: 0, position: 'relative', overflow: 'hidden', transition: 'transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease', backgroundImage: 'radial-gradient(circle at 100% 0%, rgba(255,122,24,0.09), transparent 48%)', '&:hover': onClick ? { borderColor: 'rgba(255,162,74,0.55)', transform: 'translateY(-2px)', boxShadow: '0 14px 34px rgba(0,0,0,0.3), 0 0 22px rgba(255,122,24,0.08)' } : undefined }}
+      sx={{ p: 2, display: 'flex', gap: 2, alignItems: 'center', cursor: onClick ? 'pointer' : 'default', minWidth: 0, transition: 'border-color 160ms ease', '&:hover': onClick ? { borderColor: 'primary.main' } : undefined }}
     >
       <Box
         sx={{
           width: 44, height: 44, borderRadius: 2, flexShrink: 0, display: 'grid', placeItems: 'center',
           color,
-          bgcolor: (theme) => theme.palette.mode === 'dark' ? 'rgba(255,122,24,0.12)' : 'rgba(232,80,2,0.08)',
-          border: (theme) => `1px solid ${theme.palette.mode === 'dark' ? 'rgba(255,162,74,0.16)' : 'rgba(232,80,2,0.16)'}`,
+          bgcolor: (theme) => theme.palette.mode === 'dark' ? '#2D1D12' : '#FCE9DF',
+          border: (theme) => `1px solid ${theme.palette.mode === 'dark' ? '#63300F' : '#F1C2AA'}`,
         }}
       >
         {icon}

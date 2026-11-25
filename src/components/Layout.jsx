@@ -21,9 +21,9 @@ export default function Layout() {
   const title = getPageTitle(pathname);
 
   const drawer = (
-    <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column', background: isDark ? 'linear-gradient(180deg, rgba(255,122,24,0.045), transparent 32%)' : 'linear-gradient(180deg, rgba(232,80,2,0.055), transparent 32%)' }}>
+    <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
       <Toolbar sx={{ gap: 1.5, minHeight: 76 }}>
-        <Box sx={{ width: 36, height: 36, borderRadius: 2.5, display: 'grid', placeItems: 'center', background: isDark ? 'linear-gradient(135deg, #FFA044, #FF7414)' : 'linear-gradient(135deg, #E85002, #F16001)', boxShadow: isDark ? '0 5px 18px rgba(255,122,24,0.24)' : '0 5px 18px rgba(232,80,2,0.2)' }}>
+        <Box sx={{ width: 36, height: 36, borderRadius: 2, display: 'grid', placeItems: 'center', backgroundColor: isDark ? '#E86A12' : '#E85002' }}>
           <WarehouseIcon sx={{ color: isDark ? '#17100A' : '#FFFFFF' }} />
         </Box>
         <Typography variant="subtitle1" fontWeight={800} noWrap sx={{ letterSpacing: '-0.02em' }}>Inventory Manager</Typography>
@@ -43,14 +43,14 @@ export default function Layout() {
               sx={{
                 borderRadius: 2, mb: 0.5, border: '1px solid transparent', color: 'text.secondary',
                 '&.Mui-selected': {
-                  bgcolor: isDark ? 'rgba(255,122,24,0.13)' : 'rgba(232,80,2,0.09)',
+                  bgcolor: isDark ? '#2D1D12' : '#FCE9DF',
                   color: isDark ? 'primary.light' : 'primary.main',
-                  borderColor: isDark ? 'rgba(255,162,74,0.22)' : 'rgba(232,80,2,0.2)',
+                  borderColor: isDark ? '#63300F' : '#F1C2AA',
                   boxShadow: isDark ? 'inset 3px 0 0 #FF7A18' : 'inset 3px 0 0 #E85002',
-                  '&:hover': { bgcolor: isDark ? 'rgba(255,122,24,0.18)' : 'rgba(232,80,2,0.13)' },
+                  '&:hover': { bgcolor: isDark ? '#3A2516' : '#F9D8C8' },
                 },
                 '&.Mui-selected .MuiListItemIcon-root': { color: isDark ? 'primary.light' : 'primary.main' },
-                '&:hover': { color: 'text.primary', bgcolor: isDark ? 'rgba(255,255,255,0.045)' : 'rgba(51,51,51,0.045)' },
+                '&:hover': { color: 'text.primary', bgcolor: isDark ? '#1B1D22' : '#F1F1F1' },
               }}
             >
               <ListItemIcon sx={{ minWidth: 40 }}>{item.icon}</ListItemIcon>
@@ -89,9 +89,9 @@ export default function Layout() {
           </Tooltip>
           <Chip label="Demo user" size="small" variant="outlined" sx={{
             display: { xs: 'none', md: 'inline-flex' },
-            color: 'primary.light',
-            borderColor: isDark ? 'rgba(255,162,74,0.35)' : 'rgba(232,80,2,0.28)',
-            bgcolor: isDark ? 'rgba(255,122,24,0.07)' : 'rgba(232,80,2,0.045)',
+            color: 'primary.main',
+            borderColor: isDark ? '#63300F' : '#F1C2AA',
+            bgcolor: isDark ? '#21170F' : '#FFF1E9',
           }} />
         </Toolbar>
       </AppBar>
