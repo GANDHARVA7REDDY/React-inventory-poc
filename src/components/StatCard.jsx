@@ -9,7 +9,9 @@ export default function StatCard({ label, value, caption, icon, color = 'primary
       <Box
         sx={{
           width: 44, height: 44, borderRadius: 2, flexShrink: 0, display: 'grid', placeItems: 'center',
-          color, bgcolor: 'rgba(255,122,24,0.12)', border: '1px solid rgba(255,162,74,0.16)',
+          color,
+          bgcolor: (theme) => theme.palette.mode === 'dark' ? 'rgba(255,122,24,0.12)' : 'rgba(232,80,2,0.08)',
+          border: (theme) => `1px solid ${theme.palette.mode === 'dark' ? 'rgba(255,162,74,0.16)' : 'rgba(232,80,2,0.16)'}`,
         }}
       >
         {icon}

@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import { Box, Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import { Box, Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, useTheme } from '@mui/material';
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import InventoryIcon from '@mui/icons-material/Inventory2';
 import WarehouseIcon from '@mui/icons-material/Warehouse';
@@ -20,6 +20,7 @@ const REPLENISH_LIMIT = 8;
 /** INV-01 Dashboard: every figure is derived from current data, so it updates after each transaction. */
 export default function Dashboard() {
   const { productViews, categories, transactions } = useInventory();
+  const muiTheme = useTheme();
   const navigate = useNavigate();
   const s = useMemo(() => summarizeInventory(productViews, categories, transactions), [productViews, categories, transactions]);
   const shown = s.replenishment.slice(0, REPLENISH_LIMIT);
@@ -45,11 +46,11 @@ export default function Dashboard() {
           <Box sx={{ width: '100%', height: Math.max(260, s.byCategory.length * 56) }}>
             <ResponsiveContainer>
               <BarChart data={s.byCategory} layout="vertical" margin={{ left: 8, right: 24, top: 4, bottom: 4 }}>
-                <CartesianGrid stroke="rgba(255,255,255,0.09)" strokeDasharray="4 5" horizontal={false} />
-                <XAxis type="number" allowDecimals={false} tick={{ fill: '#B5B8C0', fontSize: 11 }} axisLine={{ stroke: 'rgba(255,255,255,0.14)' }} tickLine={{ stroke: 'rgba(255,255,255,0.14)' }} />
-                <YAxis type="category" dataKey="name" width={110} tick={{ fontSize: 12, fill: '#D7D9DE' }} axisLine={false} tickLine={false} />
-                <Tooltip formatter={(v) => [formatNumber(v), 'Units']} contentStyle={{ backgroundColor: 'rgba(20,22,27,0.96)', border: '1px solid rgba(255,255,255,0.14)', borderRadius: 12, color: '#F7F7F9', backdropFilter: 'blur(14px)', boxShadow: '0 10px 30px rgba(0,0,0,0.32)' }} labelStyle={{ color: '#FFA24A', fontWeight: 700 }} itemStyle={{ color: '#F7F7F9' }} />
-                <Bar dataKey="units" fill="#FF7A18" radius={[0, 7, 7, 0]} />
+                <CartesianGrid stroke={muiTheme.palette.mode === 'dark' ? 'rgba(255,255,255,0.09)' : muiTheme.palette.divider} strokeDasharray="4 5" horizontal={false} />
+                <XAxis type="number" allowDecimals={false} tick={{ fill: muiTheme.palette.mode === 'dark' ? '#B5B8C0' : muiTheme.palette.text.secondary, fontSize: 11 }} axisLine={{ stroke: muiTheme.palette.mode === 'dark' ? 'rgba(255,255,255,0.14)' : muiTheme.palette.divider }} tickLine={{ stroke: muiTheme.palette.mode === 'dark' ? 'rgba(255,255,255,0.14)' : muiTheme.palette.divider }} />
+                <YAxis type="category" dataKey="name" width={110} tick={{ fontSize: 12, fill: muiTheme.palette.mode === 'dark' ? '#D7D9DE' : muiTheme.palette.text.secondary }} axisLine={false} tickLine={false} />
+                <Tooltip formatter={(v) => [formatNumber(v), 'Units']} contentStyle={{ backgroundColor: muiTheme.palette.mode === 'dark' ? 'rgba(20,22,27,0.96)' : 'rgba(249,249,249,0.97)', border: muiTheme.palette.mode === 'dark' ? '1px solid rgba(255,255,255,0.14)' : `1px solid ${muiTheme.palette.divider}`, borderRadius: 12, color: muiTheme.palette.text.primary, backdropFilter: 'blur(14px)', boxShadow: muiTheme.palette.mode === 'dark' ? '0 10px 30px rgba(0,0,0,0.32)' : '0 10px 30px rgba(51,51,51,0.12)' }} labelStyle={{ color: muiTheme.palette.primary.light, fontWeight: 700 }} itemStyle={{ color: muiTheme.palette.text.primary }} />
+                <Bar dataKey="units" fill={muiTheme.palette.primary.main} radius={[0, 7, 7, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </Box>
