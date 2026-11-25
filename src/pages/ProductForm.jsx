@@ -61,7 +61,7 @@ export default function ProductForm() {
       <Box component="form" noValidate onSubmit={submit}>
         <Stack spacing={2.5}>
           {formError && <Alert severity="error">{formError}</Alert>}
-          <Box sx={{ display: 'grid', gap: 2.5, gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))' }}>
+          <Box sx={{ display: 'grid', gap: 2.5, gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))' }}>
             {field('code', 'Product Code', {
               required: true, disabled: Boolean(existing),
               helperText: existing ? 'Code cannot be changed after creation.' : 'Unique, max 20 characters',

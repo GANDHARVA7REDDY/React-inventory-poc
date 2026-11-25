@@ -54,7 +54,7 @@ export default function StockAdjustment() {
           )}
           {formError && <Alert severity="error">{formError}</Alert>}
           <ProductSelect products={activeProducts} value={values.productId} onChange={(id) => setValues((v) => ({ ...v, productId: id }))} required error={errors.productId} helperText={errors.productId} />
-          <Box sx={{ display: 'grid', gap: 2.5, gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))' }}>
+          <Box sx={{ display: 'grid', gap: 2.5, gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))' }}>
             <TextField label="Current Stock (system)" value={selected ? formatNumber(selected.stock) : ''} disabled />
             <TextField
               required label="Actual Stock (physical count)" type="number" value={values.actualStock} onChange={set('actualStock')}

@@ -26,7 +26,7 @@ export default function Dashboard() {
 
   return (
     <>
-      <Box sx={{ display: 'grid', gap: 2, mb: 3, gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))' }}>
+      <Box sx={{ display: 'grid', gap: 2, mb: 3, gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))' }}>
         <StatCard label="Total Products" value={formatNumber(s.totalProducts)} caption="Active products" icon={<InventoryIcon />} onClick={() => navigate('/products')} />
         <StatCard label="Total Stock Units" value={formatNumber(s.totalUnits)} caption="Across active products" icon={<WarehouseIcon />} color="secondary.main" />
         <StatCard label="Low Stock Products" value={formatNumber(s.lowStock)} caption="At or below reorder level" icon={<WarningAmberIcon />} color="warning.main" onClick={() => navigate('/reports/low-stock')} />

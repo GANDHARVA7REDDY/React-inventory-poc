@@ -11,9 +11,9 @@ export default function DataTable({ columns, controls, rowKey = 'id', emptyMessa
   const cellSx = (c) => (c.hideBelow ? { display: { xs: 'none', [c.hideBelow]: 'table-cell' } } : undefined);
 
   return (
-    <Paper sx={{ overflow: 'hidden' }}>
-      <TableContainer sx={{ overflowX: 'auto' }}>
-        <Table size="small" aria-label="data table">
+    <Paper sx={{ width: '100%', minWidth: 0, overflow: 'hidden' }}>
+      <TableContainer sx={{ width: '100%', maxWidth: '100%', minWidth: 0, overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
+        <Table size="small" aria-label="data table" sx={{ width: '100%', minWidth: 'max-content' }}>
           <TableHead>
             <TableRow>
               {columns.map((c) => (
@@ -74,6 +74,22 @@ export default function DataTable({ columns, controls, rowKey = 'id', emptyMessa
         onRowsPerPageChange={(e) => setPageSize(Number(e.target.value))}
         rowsPerPageOptions={PAGE_SIZES}
         labelRowsPerPage="Rows"
+        sx={{
+          width: '100%',
+          '& .MuiTablePagination-toolbar': {
+            flexWrap: 'wrap',
+            justifyContent: 'flex-end',
+            gap: 1,
+            minHeight: 'auto',
+            px: { xs: 1, sm: 2 },
+            py: 1,
+          },
+          '& .MuiTablePagination-selectLabel, & .MuiTablePagination-displayedRows': {
+            my: 0,
+            whiteSpace: 'nowrap',
+          },
+          '& .MuiTablePagination-actions': { ml: 0 },
+        }}
       />
     </Paper>
   );

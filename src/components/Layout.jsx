@@ -57,37 +57,37 @@ export default function Layout() {
       <AppBar
         position="fixed"
         color="inherit"
-        sx={{ width: { md: `calc(100% - ${DRAWER_WIDTH}px)` }, ml: { md: `${DRAWER_WIDTH}px` }, borderWidth: '0 0 1px 0' }}
+        sx={{ width: { lg: `calc(100% - ${DRAWER_WIDTH}px)` }, ml: { lg: `${DRAWER_WIDTH}px` }, borderWidth: '0 0 1px 0' }}
       >
         <Toolbar>
-          <IconButton edge="start" aria-label="Open navigation" onClick={() => setMobileOpen(true)} sx={{ mr: 1, display: { md: 'none' } }}>
+          <IconButton edge="start" aria-label="Open navigation" onClick={() => setMobileOpen(true)} sx={{ mr: 1, display: { xs: 'inline-flex', lg: 'none' } }}>
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="h1" noWrap sx={{ flexGrow: 1 }}>{title}</Typography>
-          <Chip label="Demo user" size="small" variant="outlined" sx={{ display: { xs: 'none', sm: 'inline-flex' } }} />
+          <Chip label="Demo user" size="small" variant="outlined" sx={{ display: { xs: 'none', md: 'inline-flex' } }} />
         </Toolbar>
       </AppBar>
 
-      <Box component="aside" sx={{ width: { md: DRAWER_WIDTH }, flexShrink: { md: 0 } }}>
+      <Box component="aside" sx={{ width: { lg: DRAWER_WIDTH }, flexShrink: { lg: 0 } }}>
         <Drawer
           variant="temporary"
           open={mobileOpen}
           onClose={() => setMobileOpen(false)}
           ModalProps={{ keepMounted: true }}
-          sx={{ display: { xs: 'block', md: 'none' }, '& .MuiDrawer-paper': { width: DRAWER_WIDTH } }}
+          sx={{ display: { xs: 'block', lg: 'none' }, '& .MuiDrawer-paper': { width: DRAWER_WIDTH, maxWidth: 'calc(100vw - 48px)' } }}
         >
           {drawer}
         </Drawer>
         <Drawer
           variant="permanent"
           open
-          sx={{ display: { xs: 'none', md: 'block' }, '& .MuiDrawer-paper': { width: DRAWER_WIDTH, boxSizing: 'border-box' } }}
+          sx={{ display: { xs: 'none', lg: 'block' }, '& .MuiDrawer-paper': { width: DRAWER_WIDTH, boxSizing: 'border-box' } }}
         >
           {drawer}
         </Drawer>
       </Box>
 
-      <Box component="main" sx={{ flexGrow: 1, minWidth: 0, p: { xs: 1.5, sm: 2, md: 3 } }}>
+      <Box component="main" sx={{ flexGrow: 1, width: '100%', minWidth: 0, p: { xs: 1, sm: 1.5, md: 2, lg: 3 } }}>
         <Toolbar />
         <Outlet />
       </Box>

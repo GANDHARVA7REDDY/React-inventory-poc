@@ -54,7 +54,7 @@ export default function ProductDetails() {
         }
       />
 
-      <Box sx={{ display: 'grid', gap: 2, mb: 2, gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))' }}>
+      <Box sx={{ display: 'grid', gap: 2, mb: 2, gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 210px), 1fr))' }}>
         <StatCard label="Available Stock" value={`${formatNumber(product.stock)} ${product.unit}`} />
         <StatCard label="Inventory Value" value={formatCurrency(product.inventoryValue)} />
         <Paper sx={{ p: 2 }}>
@@ -65,7 +65,7 @@ export default function ProductDetails() {
       </Box>
 
       <Paper sx={{ p: 2.5, mb: 2 }}>
-        <Box sx={{ display: 'grid', gap: 2.5, gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))' }}>
+        <Box sx={{ display: 'grid', gap: 2.5, gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))' }}>
           <Info label="Product Code">{product.code}</Info>
           <Info label="Category">{product.categoryName}</Info>
           <Info label="Default Supplier">{product.supplierName}</Info>

@@ -57,7 +57,7 @@ export default function StockOut() {
               <Alert severity="warning">The selected product is inactive or does not exist, so stock cannot be issued.</Alert>
             )}
             {formError && <Alert severity="error">{formError}</Alert>}
-            <Box sx={{ display: 'grid', gap: 2.5, gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))' }}>
+            <Box sx={{ display: 'grid', gap: 2.5, gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))' }}>
               <TextField label="Transaction Reference" value={nextId} disabled helperText="Auto-generated" />
               <TextField label="Transaction Date" value={formatDateTime(new Date())} disabled helperText="Set automatically when saved" />
             </Box>
@@ -67,7 +67,7 @@ export default function StockOut() {
               error={Boolean(errors.quantity)} helperText={errors.quantity || (selected ? `Available: ${formatNumber(selected.stock)}` : undefined)}
               slotProps={{ htmlInput: { min: 1, step: 1 } }}
             />
-            <Box sx={{ display: 'grid', gap: 2.5, gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))' }}>
+            <Box sx={{ display: 'grid', gap: 2.5, gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))' }}>
               <TextField required label="Issued To" value={values.issuedTo} onChange={set('issuedTo')} error={Boolean(errors.issuedTo)} helperText={errors.issuedTo || 'Employee name'} />
               <TextField required label="Department" value={values.department} onChange={set('department')} error={Boolean(errors.department)} helperText={errors.department} />
             </Box>

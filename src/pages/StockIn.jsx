@@ -63,12 +63,12 @@ export default function StockIn() {
               <Alert severity="warning">The selected product is inactive or does not exist, so it cannot receive stock.</Alert>
             )}
             {formError && <Alert severity="error">{formError}</Alert>}
-            <Box sx={{ display: 'grid', gap: 2.5, gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))' }}>
+            <Box sx={{ display: 'grid', gap: 2.5, gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))' }}>
               <TextField label="Transaction Reference" value={nextId} disabled helperText="Auto-generated" />
               <TextField label="Transaction Date" value={formatDateTime(new Date())} disabled helperText="Set automatically when saved" />
             </Box>
             <ProductSelect products={activeProducts} value={values.productId} onChange={pickProduct} required error={errors.productId} helperText={errors.productId} />
-            <Box sx={{ display: 'grid', gap: 2.5, gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))' }}>
+            <Box sx={{ display: 'grid', gap: 2.5, gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))' }}>
               <TextField select required label="Supplier" value={values.supplierId} onChange={set('supplierId')} error={Boolean(errors.supplierId)} helperText={errors.supplierId}>
                 {activeSuppliers.map((s) => <MenuItem key={s.id} value={s.id}>{s.name}</MenuItem>)}
               </TextField>
